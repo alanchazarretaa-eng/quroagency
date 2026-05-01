@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QURO AGENCY | El Protocolo de Producción Digital</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00f2ff;
+            --secondary: #7000ff;
+            --accent: #ff00c8;
+            --dark-bg: #050505;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --text-main: #ffffff;
+            --text-dim: #a0a0a0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Fondo Animado sutil */
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 10% 20%, rgba(112, 0, 255, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 242, 255, 0.08) 0%, transparent 40%);
+            z-index: -1;
+        }
+
+        header {
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(5, 5, 5, 0.85);
+            backdrop-filter: blur(20px);
+            position: fixed;
+            width: 100%;
+            top: 31px; /* Ajustado para la barra de urgencia */
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 180px;
+            padding-bottom: 80px;
+            text-align: center;
+        }
+
+        .badge {
+            background: rgba(112, 0, 255, 0.15);
+            color: var(--primary);
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border: 1px solid rgba(0, 242, 255, 0.2);
+            margin-bottom: 25px;
+            display: inline-block;
+            letter-spacing: 1px;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            line-height: 1;
+            font-weight: 800;
+            margin-bottom: 30px;
+            background: linear-gradient(to bottom, #fff 40%, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            max-width: 750px;
+            margin: 0 auto 45px;
+        }
+
+        /* Nodos Grid */
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .nodos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 100px;
+        }
+
+        .nodo-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 28px;
+            padding: 45px 35px;
+            text-align: center;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+
+        .nodo-card:hover {
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-12px);
+        }
+
+        .nodo-card.featured {
+            border: 1px solid var(--secondary);
+            background: rgba(112, 0, 255, 0.05);
+        }
+
+        .price {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin: 20px 0;
+            color: #fff;
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: var(--text-dim);
+        }
+
+        .features-list {
+            list-style: none;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .features-list li {
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            color: var(--text-dim);
+        }
+
+        .features-list li::before {
+            content: "→";
+            color: var(--primary);
+            margin-right: 12px;
+            font-weight: 900;
+        }
+
+        .btn-wa {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .btn-wa.basic {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        .btn-wa.pro {
+            background: var(--secondary);
+            color: #fff;
+            box-shadow: 0 10px 20px rgba(112, 0, 255, 0.3);
+        }
+
+        .btn-wa.master {
+            background: var(--primary);
+            color: #000;
+            box-shadow: 0 10px 20px rgba(0, 242, 255, 0.3);
+        }
+
+        /* UGC Section */
+        .video-box {
+            background: #111;
+            aspect-ratio: 9/16;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* FAQ */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 100px;
+        }
+
+        .faq-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .faq-card h4 {
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .faq-card p {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+        }
+
+        /* Footer Perfecto */
+        footer {
+            padding: 120px 0 60px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+        }
+
+        .quote {
+            font-size: 1.5rem;
+            font-weight: 600;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            color: #eee;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 768px) {
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 3rem;
+            }
+        }
+
+        /* Estilos Extra: Urgencia y Simulador */
+        .urgency-bar {
+            background: var(--secondary);
+            color: white;
+            text-align: center;
+            font-size: 0.75rem;
+            padding: 8px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            position: fixed;
+            top: 0; width: 100%; z-index: 1100;
+        }
+
+        #live-feed {
+            background: rgba(0,242,255,0.05);
+            border: 1px solid rgba(0,242,255,0.2);
+            padding: 10px 25px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 35px;
+            font-size: 0.85rem;
+            backdrop-filter: blur(5px);
+            transition: opacity 0.5s ease;
+        }
+
+        .partners-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            opacity: 0.4;
+            filter: grayscale(1);
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .partners-grid img { height: 25px; }
+
+        .simulator-card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(0,0,0,0.5));
+            padding: 40px;
+            border-radius: 30px;
+            margin-bottom: 100px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        input[type=range] { width: 100%; margin: 20px 0; accent-color: var(--primary); }
+    </style>
+</head>
+
+<body>
+    <div class="urgency-bar">
+        ⚠️ ATENCIÓN: QUEDAN 12 CUPOS DE ACCESO PARA EL NODO INICIAL ESTA SEMANA
+    </div>
+    
+    <div class="gradient-bg"></div>
+
+    <header>
+        <div class="logo">QURO<span>AGENCY</span></div>
+        <a href="https://wa.me/5491170600342"
+            style="text-decoration: none; color: var(--primary); font-weight: 700; font-size: 0.8rem;">SOPORTE EN
+            VIVO</a>
+    </header>
+
+    <div class="container">
+        <section class="hero">
+            <div id="live-feed">
+                <span style="color: var(--primary); font-weight: 800;">● RED ACTIVA:</span> Nodo #442 acaba de liquidar +$1.240 ARS
+            </div>
+            <br>
+            <span class="badge">PROYECTO: DISPONIBLE</span>
+            <h1>Multiplicamos tu capital con <span>IA de alto rendimiento.</span></h1>
+            <p>Dejá que nuestra infraestructura global trabaje por vos. Activá un nodo, conectalo a la red y empezá a
+                ver resultados en tiempo real.</p>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="#precios" class="btn-wa pro" style="width: auto; padding: 20px 45px;">EMPEZAR A GANAR</a>
+                <a href="#que-hacemos" class="btn-wa basic" style="width: auto; padding: 20px 45px;">¿CÓMO FUNCIONA?</a>
+            </div>
+        </section>
+
+        <section class="simulator-card">
+            <div class="section-title">
+                <h2>Simulador de Rendimiento</h2>
+                <p>Proyectá tu crecimiento basado en el arbitraje actual.</p>
+            </div>
+            <div style="max-width: 600px; margin: 0 auto;">
+                <label>Tu inversión inicial: <span id="amount-val" style="color: var(--primary); font-weight: 800;">$5.000</span> ARS</label>
+                <input type="range" id="invest-range" min="5000" max="100000" step="5000" value="5000">
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px;">
+                    <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px;">
+                        <small>Retorno Estimado (30 días)</small>
+                        <div id="profit-val" style="font-size: 1.8rem; font-weight: 800; color: var(--primary);">$7.200</div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px;">
+                        <small>Potencia de Nodo</small>
+                        <div id="power-val" style="font-size: 1.8rem; font-weight: 800; color: var(--secondary);">1.2X</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="partners-grid">
+                <span style="font-size: 0.7rem; letter-spacing: 2px;">TECNOLOGÍA RESPALDADA POR:</span>
+                <p>AWS | GOOGLE CLOUD | META AD-NETWORK | BINANCE CLOUD</p>
+            </div>
+        </section>
+
+        <section id="precios" style="padding: 100px 0;">
+            <div class="section-title">
+                <h2>Elegí tu nivel de potencia</h2>
+                <p style="color: var(--text-dim)">Nodos limitados por capacidad de servidor.</p>
+            </div>
+
+            <div class="nodos-grid">
+                <div class="nodo-card">
+                    <h3>NODO INICIAL</h3>
+                    <div class="price">$5.000 <span>ARS</span></div>
+                    <ul class="features-list">
+                        <li>Activación de red básica</li>
+                        <li>Arbitraje de micro-tareas</li>
+                        <li>Retiro mínimo mensual</li>
+                        <li>Soporte Estándar</li>
+                    </ul>
+                    <a href="https://wa.me/5491170600342?text=Hola!%20Quiero%20el%20NODO%20de%205000"
+                        class="btn-wa basic">SELECCIONAR</a>
+                </div>
+
+                <div class="nodo-card featured">
+                    <h3 style="color: var(--secondary)">NODO PRO-FLOW</h3>
+                    <div class="price">$15.000 <span>ARS</span></div>
+                    <ul class="features-list">
+                        <li>Potencia de cómputo x5</li>
+                        <li>Arbitraje Ad-Traffic USD</li>
+                        <li>Liquidación prioritaria</li>
+                        <li>Acceso a Dashboard Privado</li>
+                    </ul>
+                    <a href="https://wa.me/5491170600342?text=Hola!%20Quiero%20el%20NODO%20de%2015000"
+                        class="btn-wa pro">SELECCIONAR</a>
+                </div>
+
+                <div class="nodo-card">
+                    <h3>NODO ELITE</h3>
+                    <div class="price">$30.000 <span>ARS</span></div>
+                    <ul class="features-list">
+                        <li>Fuerza Bruta de Red x10</li>
+                        <li>Pool de Inversión VIP</li>
+                        <li>Membresía Founder Vitalicia</li>
+                        <li>Gestión Directa por CEO</li>
+                    </ul>
+                    <a href="https://wa.me/5491170600342?text=Hola!%20Quiero%20el%20NODO%20de%2030000"
+                        class="btn-wa master">SELECCIONAR</a>
+                </div>
+            </div>
+        </section>
+
+        <section style="padding-bottom: 100px;">
+            <div class="section-title">
+                <h2>Prueba Social</h2>
+                <p style="color: var(--text-dim)">Mirá cómo opera nuestra comunidad en tiempo real.</p>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                <div class="video-box">
+                    <video src="assets/video1.mp4" controls poster="assets/cover1.jpg"></video>
+                </div>
+                <div class="video-box">
+                    <video src="assets/video2.mp4" controls poster="assets/cover2.jpg"></video>
+                </div>
+                <div class="video-box">
+                    <video src="assets/video3.mp4" controls poster="assets/cover3.jpg"></video>
+                </div>
+            </div>
+        </section>
+
+        <section id="que-hacemos">
+            <div class="section-title">
+                <h2>Todo lo que necesitás saber</h2>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-card">
+                    <h4>¿Cómo gano plata exactamente?</h4>
+                    <p>Tu inversión activa un "espacio" en nuestros servidores. La IA utiliza ese espacio para hacer
+                        arbitraje: comprar publicidad barata y venderla cara en milisegundos. Vos te llevás el margen de
+                        esa operación.</p>
+                </div>
+                <div class="faq-card">
+                    <h4>¿Es seguro el retorno?</h4>
+                    <p>Operamos con tecnología Stop-Loss de última generación. El sistema protege el 100% de tu capital
+                        inicial, reinvirtiendo solo las utilidades para maximizar el crecimiento sin riesgo de pérdida
+                        de base.</p>
+                </div>
+                <div class="faq-card">
+                    <h4>¿Qué tengo que hacer yo?</h4>
+                    <p>Nada. Una vez que activás el nodo por WhatsApp, nuestro equipo lo vincula a la red. Vos solo
+                        recibís tus reportes de ganancia semanales.</p>
+                </div>
+                <div class="faq-card">
+                    <h4>¿Quiénes somos?</h4>
+                    <p>Somos Quro Agency. No somos un banco, somos una aceleradora tecnológica que pone las herramientas
+                        de los multimillonarios en manos de la gente común.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p style="letter-spacing: 3px; color: var(--primary); font-size: 0.8rem; margin-bottom: 20px;">EL FUTURO NO
+                SE ESPERA</p>
+            <div class="quote">"Creamos Quro para que el capital de un pibe de barrio valga tanto como el de un inversor
+                de Wall Street. La red está lista. Solo faltás vos."</div>
+            <div class="footer-logo">QURO<span>AGENCY</span></div>
+            <p style="color: var(--text-dim); margin-bottom: 20px;">Conectados globalmente desde Buenos Aires,
+                Argentina.</p>
+            <div style="font-size: 0.7rem; opacity: 0.3;">
+                &copy; 2026 Quro Agency Protocol. Operaciones procesadas vía infraestructura distribuida.
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Simulador de Nodos en Vivo (Live Feed)
+        const amounts = ["$1.200", "$4.500", "$850", "$3.100", "$9.200", "$1.100"];
+        const nodes = ["#442", "#109", "#882", "#003", "#771", "#225"];
+        
+        setInterval(() => {
+            const randomAmount = amounts[Math.floor(Math.random() * amounts.length)];
+            const randomNode = nodes[Math.floor(Math.random() * nodes.length)];
+            const feed = document.getElementById('live-feed');
+            if(feed) {
+                feed.style.opacity = 0;
+                setTimeout(() => {
+                    feed.innerHTML = `<span style="color: var(--primary); font-weight: 800;">● RED ACTIVA:</span> Nodo ${randomNode} acaba de liquidar +${randomAmount} ARS`;
+                    feed.style.opacity = 1;
+                }, 500);
+            }
+        }, 4000);
+
+        // Lógica del Simulador
+        const range = document.getElementById('invest-range');
+        const amountVal = document.getElementById('amount-val');
+        const profitVal = document.getElementById('profit-val');
+        const powerVal = document.getElementById('power-val');
+
+        if(range) {
+            range.addEventListener('input', (e) => {
+                const val = parseInt(e.target.value);
+                amountVal.innerText = `$${val.toLocaleString()}`;
+                
+                // Simulación de ganancia (aprox 44% mensual)
+                const profit = Math.floor(val * 1.44);
+                profitVal.innerText = `$${profit.toLocaleString()}`;
+                
+                // Simulación de potencia
+                const power = (1 + (val / 100000)).toFixed(1);
+                powerVal.innerText = `${power}X`;
+            });
+        }
+    </script>
+</body>
+
+</html>
