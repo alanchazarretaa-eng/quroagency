@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expansión Latinoamérica | QURO AGENCY</title>
+
+    <link rel="icon" type="image/png" href="logo.png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+         :root {
+            --primary: #00f2ff;
+            --secondary: #7000ff;
+            --accent: #ff00c8;
+            --dark-bg: #050505;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --text-main: #ffffff;
+            --text-dim: #a0a0a0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 10% 20%, rgba(112, 0, 255, 0.1) 0%, transparent 40%), radial-gradient(circle at 90% 80%, rgba(0, 242, 255, 0.08) 0%, transparent 40%);
+            z-index: -1;
+        }
+        
+        .urgency-bar {
+            background: var(--secondary);
+            color: white;
+            text-align: center;
+            font-size: 0.75rem;
+            padding: 8px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1100;
+        }
+        
+        header {
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(5, 5, 5, 0.85);
+            backdrop-filter: blur(20px);
+            position: fixed;
+            width: 100%;
+            top: 31px;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+            color: var(--text-main);
+        }
+        
+        .logo span {
+            color: var(--primary);
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+        
+        .article-hero {
+            padding-top: 160px;
+            padding-bottom: 60px;
+        }
+        
+        .badge {
+            background: rgba(112, 0, 255, 0.15);
+            color: var(--primary);
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border: 1px solid rgba(0, 242, 255, 0.2);
+            margin-bottom: 25px;
+            display: inline-block;
+            letter-spacing: 1px;
+        }
+        
+        .article-hero h1 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            line-height: 1.15;
+            font-weight: 800;
+            margin-bottom: 25px;
+            background: linear-gradient(to bottom, #fff 40%, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        
+        .article-meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .article-body {
+            font-size: 1.1rem;
+            color: #ccc;
+            line-height: 1.85;
+            margin-bottom: 80px;
+        }
+        
+        .article-body p {
+            margin-bottom: 25px;
+        }
+        
+        .article-body strong {
+            color: var(--text-main);
+        }
+        
+        .divider {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, var(--secondary), var(--primary));
+            border-radius: 10px;
+            margin: 40px 0;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+            transition: gap 0.3s;
+        }
+        
+        .back-link:hover {
+            gap: 16px;
+        }
+        
+        .cta-box {
+            background: rgba(112, 0, 255, 0.08);
+            border: 1px solid rgba(112, 0, 255, 0.3);
+            border-radius: 24px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .cta-box h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+        
+        .cta-box p {
+            color: var(--text-dim);
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+        }
+        
+        .btn-wa {
+            display: inline-block;
+            padding: 18px 45px;
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            background: var(--secondary);
+            color: #fff;
+            box-shadow: 0 10px 20px rgba(112, 0, 255, 0.3);
+        }
+        
+        .btn-wa:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(112, 0, 255, 0.4);
+        }
+        
+        footer {
+            padding: 60px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+        
+        .footer-logo span {
+            color: var(--primary);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="urgency-bar">
+        ⚠️ ATENCIÓN: QUEDAN 12 CUPOS DE ACCESO PARA EL NODO INICIAL ESTA SEMANA
+    </div>
+
+    <div class="gradient-bg"></div>
+
+    <header>
+        <a href="index.html" class="logo">QURO<span>AGENCY</span></a>
+        <a href="https://wa.me/5491170600342" style="text-decoration: none; color: var(--primary); font-weight: 700; font-size: 0.8rem;">SOPORTE EN VIVO</a>
+    </header>
+
+    <div class="container">
+        <article class="article-hero">
+            <a href="index.html#news" class="back-link">← Volver a Novedades</a>
+
+            <span class="badge">NEGOCIOS · EXPANSIÓN</span>
+
+            <h1>Quro Agency anuncia expansión de infraestructura tecnológica en Latinoamérica</h1>
+
+            <div class="article-meta">
+                <span>📅 30 de Abril, 2026</span>
+                <span>✍️ Equipo Quro Agency</span>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="article-body">
+                <p>La agencia liderada por <strong>Alan Chazarreta</strong> confirma una nueva fase de crecimiento. Tras el éxito de sus operaciones iniciales, Quro Agency está optimizando sus servicios de despliegue de servidores y automatización para empresas
+                    en mercados emergentes.</p>
+
+                <p>Esta expansión permitirá a clientes en toda la región acceder a tecnologías de infraestructura de alta disponibilidad, posicionando a la agencia como un referente en el ecosistema digital latinoamericano.</p>
+            </div>
+        </article>
+
+        <div class="cta-box">
+            <h3>¿Querés ser parte de esta expansión?</h3>
+            <p>Activá tu nodo hoy y sumáte a la red de operadores que ya están creciendo.</p>
+            <a href="https://wa.me/5491170600342?text=Hola!%20Vi%20la%20noticia%20de%20expansion%20y%20quiero%20informarme" class="btn-wa">CONTACTAR AHORA</a>
+        </div>
+
+        <footer>
+            <div class="footer-logo">QURO<span>AGENCY</span></div>
+            <p style="color: var(--text-dim); font-size: 0.8rem;">&copy; 2026 Quro Agency Protocol.</p>
+        </footer>
+    </div>
+</body>
+
+</html>
